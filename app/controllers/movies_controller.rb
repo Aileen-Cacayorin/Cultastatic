@@ -4,6 +4,7 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def show
+  
     @reviews = @movie.reviews.order(created_at: :desc)
     @review = Review.new
     @category = @movie.category
@@ -13,6 +14,7 @@ class MoviesController < ApplicationController
   def new
     @category = Category.find(params[:category_id])
     @movie = Movie.new
+
   end
 
   def create
@@ -20,7 +22,7 @@ class MoviesController < ApplicationController
     @movie = @category.movies.new(movie_params)
 
     if @movie.save
-      # @category.save
+
       flash[:success] = "Legit! Just added a movie!"
       redirect_to @movie
     else
