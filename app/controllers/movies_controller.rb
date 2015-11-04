@@ -4,11 +4,12 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def show
-  
+
     @reviews = @movie.reviews.order(created_at: :desc)
     @review = Review.new
     @category = @movie.category
     @average_rating = (@movie.average_rating).ceil
+    @videos = @movie.videos
   end
 
   def new

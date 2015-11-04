@@ -13,6 +13,10 @@
   <% end %>
 </span>
 
+<br>
+<br>
+
+<%= link_to "Add trailer", new_movie_video_path(@movie, @video) %>
 
 <h3>Directed by: <%= @movie.director %> </h3>
 
@@ -49,3 +53,10 @@
     </div>
   <% end %>
 <%end %>
+
+<% if @videos.any? %>
+  <% @videos.each do |video| %>
+
+      <%= render 'videos/video', :object => video %>
+  <% end %>
+<% end %>

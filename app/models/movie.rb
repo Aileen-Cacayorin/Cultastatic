@@ -1,6 +1,7 @@
 class Movie < ActiveRecord::Base
   belongs_to :category
   has_many :reviews
+  has_many :videos
 
   validate  :picture_size
   mount_uploader :picture, PictureUploader
