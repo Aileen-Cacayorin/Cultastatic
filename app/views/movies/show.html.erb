@@ -55,8 +55,8 @@
 <%end %>
 
 <% if @videos.any? %>
-  <% @videos.each do |video| %>
 
-      <%= render 'videos/video', :object => video %>
-  <% end %>
+
+      <%= render 'videos/video' %>
+
 <% end %>
