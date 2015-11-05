@@ -28,7 +28,7 @@
         <% if @category %>
         <li><%= link_to "Categories", categories_path  %></li>
         <% end %>
-        <% if @category.movies.any?%>
+        <% if @category && @category.movies.any?%>
           <li><%= link_to "#{@category.name}", category_path(@category) %></li>
         <% end  %>
       </ul>

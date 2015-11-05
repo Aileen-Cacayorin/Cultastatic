@@ -3,12 +3,16 @@ Rails.application.routes.draw do
 
 
   root to: 'categories#index'
-  
+
   resources :categories do
     resources :movies
   end
 
   resources :movies do
     resources :reviews
+  end
+
+  resources :movies do
+    resources :videos
   end
 end

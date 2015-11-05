@@ -1,0 +1,7 @@
+<%= render 'layouts/errors', :object => @video %>
+
+<%= form_for [@movie, @video] do |f| %>
+<%= f.label :link %>
+<%= f.text_field :link %>
+<%= f.submit %>
+<% end %>

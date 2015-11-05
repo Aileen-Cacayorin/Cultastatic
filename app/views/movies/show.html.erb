@@ -1,51 +1,76 @@
+<div class="col-md-9">
 
-<%= image_tag @movie.picture.url %>
 
-<h1><%= @movie.title %>
-  <% if user_signed_in? %>
-    <%= link_to "Edit", edit_movie_path(@movie), class: ' btn btn-default' %>
+  <%= image_tag @movie.picture.url %>
+
+  <h1><%= @movie.title %>
+    <% if user_signed_in? %>
+      <%= link_to "Edit", edit_movie_path(@movie), class: ' btn btn-default' %>
+    <% end %>
+  </h1>
+
+  <span class="user_ratings" data-toggle="tooltip" data-placement="bottom" title="Average ratings for <%= @movie.title %>">
+    <% @average_rating.times do |rating| %>
+      <%= fa_icon "star" %>
+    <% end %>
+  </span>
+
+  <br>
+  <br>
+
+
+
+  <h3>Directed by: <%= @movie.director %> </h3>
+
+  <p class="lead">Cast: <%= @movie.actors %></p>
+
+  <p class="lead"> Runtime: <%= @movie.runtime %></p>
+
+  <p class="lead"> Release date: <%= @movie.release %> </p>
+
+  <p class="lead"> Summary: <%= @movie.summary %> </p>
+
+
+  <%= link_to "Add trailer", new_movie_video_path(@movie, @video) %>
+
+  <% if @videos.any? %>
+
+  <div class="container">
+      <h1>Latest Trailers</h1>
+        <% @videos.each do |video| %>
+          <%= link_to movie_video_path(@movie, video), id: "show_video_#{video.id}", remote: true do %>
+            <%= image_tag("https://img.youtube.com/vi/#{video.uid}/mqdefault.jpg") %>
+          <% end %>
+        <% end %>
+  </div>
   <% end %>
-</h1>
-
-<span class="user_ratings" data-toggle="tooltip" data-placement="bottom" title="Average ratings for <%= @movie.title %>">
-  <% @average_rating.times do |rating| %>
-    <%= fa_icon "star" %>
-  <% end %>
-</span>
-
-
-<h3>Directed by: <%= @movie.director %> </h3>
-
-<p class="lead">Cast: <%= @movie.actors %></p>
-
-<p class="lead"> Runtime: <%= @movie.runtime %></p>
-
-<p class="lead"> Release date: <%= @movie.release %> </p>
-
-<p class="lead"> Summary: <%= @movie.summary %> </p>
-
-
-<div class="review-container">
-  <%= render partial: 'reviews/form' %>
 </div>
 
-<% if @reviews.any? %>
+<div class="col-md-3">
+  <div class="review-container">
+    <%= render partial: 'reviews/form' %>
+  </div>
+
+
+
+  <% if @reviews.any? %>
   <% @reviews.each do |review| %>
-    <div class="col-xs-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4>
-            <%= review.user.username if review.user %>
-            <% review.rating.times do |rating| %>
-              <%= fa_icon "star" %>
-            <% end %>
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>
+          <%= review.user.username if review.user %>
+          <% review.rating.times do |rating| %>
+          <%= fa_icon "star" %>
+          <% end %>
           <span class="pull-right"><i><%= time_ago_in_words(review.created_at) %> ago</i></span>
-          </h4>
-        </div>
-        <div class="panel-body">
-          <p class="lead"><%= review.body %></p>
-        </div>
+        </h4>
+      </div>
+      <div class="panel-body">
+        <p class="lead"><%= review.body %></p>
       </div>
     </div>
+  </div>
   <% end %>
-<%end %>
+  <%end %>
+</div>

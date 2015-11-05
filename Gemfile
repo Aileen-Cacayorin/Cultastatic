@@ -15,6 +15,9 @@ gem "font-awesome-rails"
 gem 'carrierwave', '0.10.0'
 gem 'devise'
 gem 'mini_magick',             '3.8.0'
+gem "hirb"
+gem 'yt', '~> 0.13.7'
+gem 'autoprefixer-rails'
 
 group :production do
   gem 'puma'
