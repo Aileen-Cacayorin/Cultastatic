@@ -1,7 +1,5 @@
 $("#show_video_<%=@video.id%>").hide().after("<%= j render('show')%>");
 
 $('#hide_trailer').click(function(){
-  $('#player').hide();
-  $('#hide_trailer').hide();
-  $("#show_video_<%=@video.id%>").show();
+  location.reload();
 })

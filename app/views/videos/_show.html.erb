@@ -1,3 +1,6 @@
+<div id="video_player">
+
+
 <%= link_to "Close", movie_path(@movie), id: "hide_trailer", remote: true %>
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <div id="player"></div>
@@ -45,3 +48,5 @@
         player.stopVideo();
       }
     </script>
+
+  </div>
