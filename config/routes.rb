@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   resources :movies do
     resources :videos
   end
+
+  resources :movies do
+    resources :locations  
+  end
 end

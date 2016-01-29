@@ -1,0 +1,39 @@
+
+  function fullAddress(location) {
+    return location.street + ", " + location.city + ", " + location.state + location.zip;
+  }
+
+  center: {lat: 45.558217, lng: -122.643122}
+
+  function getMarkers(locations) {
+    locations = locations.replace(/&quot;/g, '"');
+    new_locations = JSON.parse(locations);
+
+    new_locations.forEach(function(location) {
+      var address = [];
+      address.push(location.latitude);
+      address.push(location.longitude);
+      markers.push(address);
+
+    });
+  }
+
+
+  locations = locations.replace(/&quot;/g, '"');
+  new_locations = JSON.parse(locations);
+  console.log(new_locations);
+  new_locations.forEach(function(location) {
+    var address = [];
+    address.push(location.latitude);
+    address.push(location.longitude);
+    markers.push(address);
+  });
+
+  for( i = 0; i < markers.length; i++ ) {
+      var position = new google.maps.LatLng(markers[i][0], markers[i][1]);
+      bounds.extend(position);
+      marker = new google.maps.Marker({
+          position: position,
+          map: map,
+      });
+    };

@@ -8,6 +8,8 @@ class CategoriesController < ApplicationController
                           .paginate(page: params[:page], per_page: 10)
     @category = Category.new
     @movies = Movie.all.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @locations = Location.all.to_json
+
   end
 
   def show
