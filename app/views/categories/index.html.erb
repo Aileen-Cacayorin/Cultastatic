@@ -46,14 +46,19 @@
 </div>
 
 
-<script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP97vGZq1Kf1p2Npz1V5ENVZRt2cX4zpE&callback=initMap">
-    </script>
+<!-- google maps container -->
+
 <div id="map-container">
   <div id="map-canvas" style="width: 400px; height: 400px"></div>
 </div>
+
+<!-- google maps api script -->
+<script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBP97vGZq1Kf1p2Npz1V5ENVZRt2cX4zpE&callback=initMap">
+</script>
+
   <script type="text/javascript">
-    $(document).on('ready page:load', function () {
+    // call to draw map
     initMap("<%=@locations%>")
-    });
+
   </script>

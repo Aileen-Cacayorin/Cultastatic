@@ -37,3 +37,5 @@
           map: map,
       });
     };
+
+  var myLatLng = {lat: 45.558217, lng: -122.643122};
