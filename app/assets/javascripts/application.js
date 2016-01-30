@@ -31,16 +31,11 @@ function initMap(locations) {
 
   var bounds;
   bounds = new google.maps.LatLngBounds();
-  map = new google.maps.Map(document.getElementById('map-canvas'), { // also says google is undefined
+  map = new google.maps.Map(document.getElementById('map-canvas'), {
   center: {lat: 45.558217, lng: -122.643122},
   zoom: 12
   });
 
-// these static markers work
-  // var markers = [
-  //      ['Cafe Vitta', 45.560226,-122.635818],
-  //      ['Extracto', 45.562990, -122.635539],
-  //  ]
 
   var markers = [];
   new_locations.forEach(function(location) {
